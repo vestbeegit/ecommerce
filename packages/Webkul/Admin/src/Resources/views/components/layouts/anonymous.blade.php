@@ -29,7 +29,7 @@
     >
     <meta 
         name="generator" 
-        content="Bizora"
+        content="FURSATK"
     >
 
     @stack('meta')
@@ -74,7 +74,7 @@
 <body>
     {!! view_render_event('bagisto.admin.layout.body.before') !!}
 
-    <!-- Bizora -->
+    <!-- FURSATK -->
     <div id="app">
         <!-- Flash Message Blade Component -->
         <x-admin::flash-group />

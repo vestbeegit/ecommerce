@@ -44,7 +44,21 @@ class ProductTableSeeder extends Seeder
      */
     public function run($parameters = [])
     {
+        $seeder = new CategoryTableSeeder;
+        $seeder->sampleCategories($parameters);
+        $this->runProductsOnly($parameters);
+    }
+
+    /**
+     * Seed only products (no categories). Use when categories already exist.
+     *
+     * @param  array  $parameters
+     * @return void
+     */
+    public function runProductsOnly(array $parameters = [])
+    {
         DB::table('products')->delete();
+        DB::statement('ALTER TABLE products AUTO_INCREMENT = 1');
 
         $defaultLocale = $parameters['default_locale'] ?? config('app.locale');
 
@@ -58,12 +72,15 @@ class ProductTableSeeder extends Seeder
             return Arr::only($row, ['parent_id', 'sku', 'type', 'attribute_family_id', 'created_at', 'updated_at']);
         });
 
-        // Category seeder.
-        $seeder = new CategoryTableSeeder;
-
-        $seeder->sampleCategories($parameters);
-
-        DB::table('products')->insert($products);
+        // Insert parent products first (parent_id null), then variants (parent_id set) to satisfy FK
+        $parents = array_values(Arr::where($products, fn ($p) => empty($p['parent_id'])));
+        $children = array_values(Arr::where($products, fn ($p) => ! empty($p['parent_id'])));
+        if (! empty($parents)) {
+            DB::table('products')->insert($parents);
+        }
+        if (! empty($children)) {
+            DB::table('products')->insert($children);
+        }
 
         $createdProducts = DB::table('products')->get();
 
@@ -1343,7 +1360,7 @@ class ProductTableSeeder extends Seeder
     public function productImages($targetPath, $file, $default = null)
     {
         if (file_exists(base_path(self::BASE_PATH.$file))) {
-            return Storage::putFile($targetPath, new File(base_path(self::BASE_PATH.$file)));
+            return Storage::disk('public')->putFile($targetPath, new File(base_path(self::BASE_PATH.$file)));
         }
 
         if (! $default) {
@@ -1351,7 +1368,7 @@ class ProductTableSeeder extends Seeder
         }
 
         if (file_exists(base_path(self::BASE_PATH.$default))) {
-            return Storage::putFile($targetPath, new File(base_path(self::BASE_PATH.$default)));
+            return Storage::disk('public')->putFile($targetPath, new File(base_path(self::BASE_PATH.$default)));
         }
     }
 }

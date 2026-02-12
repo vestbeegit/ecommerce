@@ -6,6 +6,9 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Webkul\Installer\Console\Commands\Installer as InstallerCommand;
+use Webkul\Installer\Console\Commands\SeedSampleCategories;
+use Webkul\Installer\Console\Commands\SeedSampleData;
+use Webkul\Installer\Console\Commands\SeedSampleProducts;
 use Webkul\Installer\Http\Middleware\CanInstall;
 use Webkul\Installer\Http\Middleware\Locale;
 
@@ -49,6 +52,9 @@ class InstallerServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 InstallerCommand::class,
+                SeedSampleCategories::class,
+                SeedSampleProducts::class,
+                SeedSampleData::class,
             ]);
         }
     }

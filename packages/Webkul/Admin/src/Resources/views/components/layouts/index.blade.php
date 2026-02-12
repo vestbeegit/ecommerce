@@ -35,7 +35,7 @@
     >
     <meta 
         name="generator" 
-        content="Bizora"
+        content="FURSATK"
     >
 
     @stack('meta')
@@ -86,7 +86,7 @@
 <body class="h-full dark:bg-gray-950">
     {!! view_render_event('bagisto.admin.layout.body.before') !!}
 
-    <!-- Bizora -->
+    <!-- FURSATK -->
     <div
         id="app"
         class="h-full"
@@ -130,7 +130,7 @@
                 <!-- Powered By -->
                 <div class="mt-auto">
                     <div class="border-t bg-white py-2 text-center text-xs sm:text-sm dark:border-gray-800 dark:bg-gray-900 dark:text-white">
-                        <span class="font-semibold text-[#333366]">Bizora</span> — Built For Business
+                        <span class="font-semibold text-[#333366]">FURSATK</span>
                     </div>
                 </div>
             </div>

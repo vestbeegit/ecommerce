@@ -3,7 +3,6 @@
 namespace Webkul\Product;
 
 use Illuminate\Support\Facades\Storage;
-use League\Flysystem\Local\LocalFilesystemAdapter;
 use Webkul\Customer\Contracts\Wishlist;
 use Webkul\Product\Repositories\ProductRepository;
 
@@ -108,9 +107,11 @@ class ProductImage
     {
         $images = $product?->images;
 
-        return $images && $images->count()
-            ? $this->getCachedImageUrls($images[0]->path)
-            : $this->getFallbackImageUrls();
+        if ($images && $images->count() && Storage::has($images[0]->path)) {
+            return $this->getCachedImageUrls($images[0]->path);
+        }
+
+        return $this->getFallbackImageUrls();
     }
 
     /**
@@ -120,20 +121,17 @@ class ProductImage
      */
     private function getCachedImageUrls($path): array
     {
-        if (! $this->isDriverLocal()) {
-            return [
-                'small_image_url'    => Storage::url($path),
-                'medium_image_url'   => Storage::url($path),
-                'large_image_url'    => Storage::url($path),
-                'original_image_url' => Storage::url($path),
-            ];
+        if (! Storage::has($path)) {
+            return $this->getFallbackImageUrls();
         }
 
+        $url = Storage::url($path);
+
         return [
-            'small_image_url'    => url('cache/small/'.$path),
-            'medium_image_url'   => url('cache/medium/'.$path),
-            'large_image_url'    => url('cache/large/'.$path),
-            'original_image_url' => url('cache/original/'.$path),
+            'small_image_url'    => $url,
+            'medium_image_url'   => $url,
+            'large_image_url'    => $url,
+            'original_image_url' => $url,
         ];
     }
 
@@ -142,31 +140,28 @@ class ProductImage
      */
     private function getFallbackImageUrls(): array
     {
+        $placeholders = config('placeholder_images.products', []);
+        $placeholder = ! empty($placeholders)
+            ? $placeholders[array_rand($placeholders)]
+            : 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&q=80';
+
         $smallImageUrl = core()->getConfigData('catalog.products.cache_small_image.url')
                         ? Storage::url(core()->getConfigData('catalog.products.cache_small_image.url'))
-                        : bagisto_asset('images/small-product-placeholder.webp', 'shop');
+                        : $placeholder;
 
         $mediumImageUrl = core()->getConfigData('catalog.products.cache_medium_image.url')
                         ? Storage::url(core()->getConfigData('catalog.products.cache_medium_image.url'))
-                        : bagisto_asset('images/medium-product-placeholder.webp', 'shop');
+                        : $placeholder;
 
         $largeImageUrl = core()->getConfigData('catalog.products.cache_large_image.url')
                         ? Storage::url(core()->getConfigData('catalog.products.cache_large_image.url'))
-                        : bagisto_asset('images/large-product-placeholder.webp', 'shop');
+                        : $placeholder;
 
         return [
             'small_image_url'    => $smallImageUrl,
             'medium_image_url'   => $mediumImageUrl,
             'large_image_url'    => $largeImageUrl,
-            'original_image_url' => bagisto_asset('images/large-product-placeholder.webp', 'shop'),
+            'original_image_url' => $placeholder,
         ];
-    }
-
-    /**
-     * Is driver local.
-     */
-    private function isDriverLocal(): bool
-    {
-        return Storage::getAdapter() instanceof LocalFilesystemAdapter;
     }
 }

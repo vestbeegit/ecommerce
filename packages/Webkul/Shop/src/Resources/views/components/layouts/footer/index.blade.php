@@ -143,14 +143,14 @@
         <a href="{{ route('shop.home.index') }}" class="flex items-center gap-2 max-md:flex-col">
             <img
                 src="{{ core()->getCurrentChannel()->logo_url ?? bagisto_asset('images/logo.png') }}"
-                alt="Bizora"
+                alt="FURSATK"
                 width="120"
                 height="28"
                 class="h-7 w-auto"
             >
             <div class="text-center">
-                <span class="block text-sm font-semibold text-[#333366]">Bizora</span>
-                <span class="block text-xs tracking-wider text-[#333366]">BUILT FOR BUSINESS</span>
+                <span class="block text-sm font-semibold text-[#333366]">FURSATK</span>
+                <span class="block text-xs tracking-wider text-[#333366]">@lang('shop::app.components.layouts.footer.tagline')</span>
             </div>
         </a>
 

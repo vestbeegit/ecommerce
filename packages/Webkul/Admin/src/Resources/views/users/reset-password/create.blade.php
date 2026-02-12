@@ -117,7 +117,7 @@
 
             <!-- Powered By -->
             <div class="text-sm font-normal text-gray-600">
-                <span class="font-semibold text-[#333366]">Bizora</span> — Built For Business
+                <span class="font-semibold text-[#333366]">FURSATK</span>
             </div>
         </div>
     </div>

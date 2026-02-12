@@ -1,5 +1,19 @@
 {!! view_render_event('bagisto.shop.layout.header.before') !!}
 
+{{-- Top menu bar (display only, like Daraz) - Home, About, Categories, Login, Sign Up --}}
+<div class="border-b border-gray-200 bg-gray-50 max-lg:border-0 max-lg:bg-white">
+    <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 py-2 text-sm font-medium text-gray-700 max-lg:justify-between max-lg:gap-x-4 max-lg:px-4 max-lg:py-2">
+        <span class="cursor-default select-none" role="presentation">Home</span>
+        <span class="cursor-default select-none" role="presentation">About</span>
+        <span class="cursor-default select-none" role="presentation">Categories</span>
+        <span class="cursor-default select-none" role="presentation">Deals</span>
+        <span class="cursor-default select-none" role="presentation">Sell</span>
+        <span class="max-lg:hidden" aria-hidden="true">|</span>
+        <span class="cursor-default select-none" role="presentation">Login</span>
+        <span class="cursor-default select-none" role="presentation">Sign Up</span>
+    </div>
+</div>
+
 @if(core()->getCurrentChannel()->locales()->count() > 1 || core()->getCurrentChannel()->currencies()->count() > 1 )
     <div class="max-lg:hidden">
         <x-shop::layouts.header.desktop.top />

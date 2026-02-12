@@ -26,11 +26,33 @@
     </script>
 @endpush
 
+@php
+    $hasImageCarousel = $customizations->contains(fn ($c) => $c->type === 'image_carousel');
+    $defaultSliderImages = [
+        ['image' => 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1920&q=80', 'title' => 'Fashion Sale', 'link' => ''],
+        ['image' => 'https://images.unsplash.com/photo-1607082349566-187342175e2f?w=1920&q=80', 'title' => 'Mega Deals', 'link' => ''],
+        ['image' => 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=1920&q=80', 'title' => 'Electronics', 'link' => ''],
+        ['image' => 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1920&q=80', 'title' => 'Home & Living', 'link' => ''],
+        ['image' => 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&q=80', 'title' => 'New Arrivals', 'link' => ''],
+    ];
+@endphp
+
 <x-shop::layouts>
     <!-- Page Title -->
     <x-slot:title>
         {{  $channel->home_seo['meta_title'] ?? '' }}
     </x-slot>
+
+    <!-- Default slider with dummy images when theme has no image carousel -->
+    @if (!$hasImageCarousel)
+        <x-shop::carousel
+            :options="['images' => $defaultSliderImages]"
+            aria-label="{{ trans('shop::app.home.index.image-carousel') }}"
+        />
+    @endif
+
+    <!-- Shop by type / Collections with dummy images from the internet -->
+    @include('shop::home.partials.collections-dummy')
 
     <!-- Loop over the theme customization -->
     @foreach ($customizations as $customization)
@@ -47,18 +69,24 @@
 
                 @break
             @case ($customization::STATIC_CONTENT)
-                <!-- push style -->
-                @if (! empty($data['css']))
-                    @push ('styles')
-                        <style>
-                            {{ $data['css'] }}
-                        </style>
-                    @endpush
-                @endif
+                @php
+                    $html = $data['html'] ?? '';
+                    $isCollectionBlock = str_contains($html, 'top-collection') || str_contains($html, 'bold-collection') || str_contains($html, 'game-container');
+                @endphp
+                @if (!$isCollectionBlock)
+                    <!-- push style -->
+                    @if (! empty($data['css']))
+                        @push ('styles')
+                            <style>
+                                {{ $data['css'] }}
+                            </style>
+                        @endpush
+                    @endif
 
-                <!-- render html -->
-                @if (! empty($data['html']))
-                    {!! $data['html'] !!}
+                    <!-- render html -->
+                    @if (! empty($data['html']))
+                        {!! $data['html'] !!}
+                    @endif
                 @endif
 
                 @break
@@ -84,4 +112,27 @@
                 @break
         @endswitch
     @endforeach
+
+    {{-- Always show categories and products for a proper storefront (even if theme customizations are minimal) --}}
+    @php
+        $rootCategoryId = $channel->root_category_id ?? 1;
+        $defaultCategoryFilters = ['parent_id' => $rootCategoryId, 'sort' => 'asc', 'limit' => 10];
+        $defaultProductFilters = ['sort' => 'created_at-desc', 'limit' => 12];
+    @endphp
+
+    <!-- Shop by Category (default section) -->
+    <x-shop::categories.carousel
+        :title="trans('shop::app.home.index.shop-by-category')"
+        :src="route('shop.api.categories.index', $defaultCategoryFilters)"
+        :navigation-link="route('shop.home.index')"
+        aria-label="{{ trans('shop::app.home.index.categories-carousel') }}"
+    />
+
+    <!-- New Arrivals / All Products (default section) -->
+    <x-shop::products.carousel
+        :title="trans('shop::app.home.index.new-arrivals')"
+        :src="route('shop.api.products.index', $defaultProductFilters)"
+        :navigation-link="route('shop.search.index')"
+        aria-label="{{ trans('shop::app.home.index.product-carousel') }}"
+    />
 </x-shop::layouts>

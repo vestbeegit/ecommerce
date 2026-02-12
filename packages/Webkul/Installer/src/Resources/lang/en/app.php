@@ -390,6 +390,15 @@ return [
                     'name'             => 'Winter Wear',
                     'slug'             => 'winter-wear',
                 ],
+
+                '4' => [
+                    'description'      => 'Women Category Description',
+                    'meta-description' => 'Women Category Meta Description',
+                    'meta-keywords'    => 'Women Category Meta Keywords',
+                    'meta-title'       => 'Women Category Meta Title',
+                    'name'             => 'Women',
+                    'slug'             => 'women',
+                ],
             ],
         ],
 
@@ -624,7 +633,7 @@ return [
         'index' => [
             'create-administrator' => [
                 'admin'            => 'Admin',
-                'bagisto'          => 'Bizora',
+                'bagisto'          => 'FURSATK',
                 'confirm-password' => 'Confirm Password',
                 'email'            => 'Email',
                 'email-address'    => 'admin@example.com',
@@ -639,7 +648,7 @@ return [
                 'application-name'            => 'Application Name',
                 'argentine-peso'              => 'Argentine Peso (ARS)',
                 'australian-dollar'           => 'Australian Dollar (AUD)',
-                'bagisto'                     => 'Bizora',
+                'bagisto'                     => 'FURSATK',
                 'bangladeshi-taka'            => 'Bangladeshi Taka (BDT)',
                 'bahraini-dinar'              => 'Bahraini Dinar (BHD)',
                 'brazilian-real'              => 'Brazilian Real (BRL)',
@@ -732,24 +741,24 @@ return [
             ],
 
             'installation-processing' => [
-                'bagisto'      => 'Installation Bizora',
+                'bagisto'      => 'Installation FURSATK',
                 'bagisto-info' => 'Creating the database tables, this can take a few moments',
                 'title'        => 'Installation',
             ],
 
             'installation-completed' => [
                 'admin-panel'                => 'Admin Panel',
-                'bagisto-forums'             => 'Bizora Forum',
+                'bagisto-forums'             => 'FURSATK Forum',
                 'customer-panel'             => 'Customer Panel',
-                'explore-bagisto-extensions' => 'Explore Bizora Extension',
+                'explore-bagisto-extensions' => 'Explore FURSATK Extension',
                 'title'                      => 'Installation Completed',
-                'title-info'                 => 'Bizora is Successfully installed on your system.',
+                'title-info'                 => 'FURSATK is Successfully installed on your system.',
             ],
 
             'ready-for-installation' => [
                 'create-databsae-table'   => 'Create the database table',
                 'install'                 => 'Installation',
-                'install-info'            => 'Bizora For Installation',
+                'install-info'            => 'FURSATK For Installation',
                 'install-info-button'     => 'Click the button below to',
                 'populate-database-table' => 'Populate the database tables',
                 'start-installation'      => 'Start Installation',
@@ -760,8 +769,8 @@ return [
                 'locale'        => 'Locale',
                 'main'          => 'Start',
                 'select-locale' => 'Select Locale',
-                'title'         => 'Your Bizora install',
-                'welcome-title' => 'Welcome to Bizora',
+                'title'         => 'Your FURSATK install',
+                'welcome-title' => 'Welcome to FURSATK',
             ],
 
             'server-requirements' => [
@@ -789,9 +798,9 @@ return [
 
             'arabic'                   => 'Arabic',
             'back'                     => 'Back',
-            'bagisto'                  => 'Bizora',
+            'bagisto'                  => 'FURSATK',
             'bagisto-info'             => 'a Community Project by',
-            'bagisto-logo'             => 'Bizora Logo',
+            'bagisto-logo'             => 'FURSATK Logo',
             'bengali'                  => 'Bengali',
             'catalan'                  => 'Catalan',
             'chinese'                  => 'Chinese',
@@ -803,7 +812,7 @@ return [
             'hebrew'                   => 'Hebrew',
             'hindi'                    => 'Hindi',
             'indonesian'               => 'Indonesian',
-            'installation-description' => 'Bizora installation typically involves several steps. Here\'s a general outline of the installation process for Bizora',
+            'installation-description' => 'FURSATK installation typically involves several steps. Here\'s a general outline of the installation process for FURSATK',
             'installation-info'        => 'We are happy to see you here!',
             'installation-title'       => 'Welcome to Installation',
             'italian'                  => 'Italian',
@@ -814,10 +823,10 @@ return [
             'russian'                  => 'Russian',
             'sinhala'                  => 'Sinhala',
             'spanish'                  => 'Spanish',
-            'title'                    => 'Bizora Installer',
+            'title'                    => 'FURSATK Installer',
             'turkish'                  => 'Turkish',
             'ukrainian'                => 'Ukrainian',
-            'webkul'                   => 'Bizora',
+            'webkul'                   => 'FURSATK',
         ],
     ],
 ];

@@ -4,6 +4,20 @@
     'hasFooter'  => true,
 ])
 
+@push('styles')
+<style>
+    .theme-modern .icon-search { color: #0d9488; }
+    .theme-modern header { border-bottom: 2px solid #0d9488; }
+    .theme-modern .primary-button,
+    .theme-modern a.primary-button { background-color: #0d9488 !important; border-color: #0d9488; }
+    .theme-modern .primary-button:hover,
+    .theme-modern a.primary-button:hover { opacity: 0.9; filter: brightness(1.05); }
+    .theme-modern footer { background: linear-gradient(180deg, #f0fdfa 0%, #ccfbf1 100%) !important; }
+    .theme-modern .font-dmserif { color: #0f766e; }
+    .theme-modern main { background: #fafafa; }
+</style>
+@endpush
+
 <!DOCTYPE html>
 
 <html
@@ -41,7 +55,7 @@
         >
         <meta 
             name="generator" 
-            content="Bizora"
+            content="FURSATK"
         >
 
         @stack('meta')
@@ -93,7 +107,7 @@
 
     </head>
 
-    <body>
+    <body class="theme-modern">
         {!! view_render_event('bagisto.shop.layout.body.before') !!}
 
         <a
@@ -103,7 +117,7 @@
             Skip to main content
         </a>
 
-        <!-- Bizora -->
+        <!-- FURSATK -->
         <div id="app">
             <!-- Flash Message Blade Component -->
             <x-shop::flash-group />

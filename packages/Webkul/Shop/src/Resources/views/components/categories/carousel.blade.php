@@ -16,9 +16,10 @@
     >
         <div
             class="container mt-14 max-lg:px-8 max-md:mt-7 max-md:!px-0 max-sm:mt-5"
-            v-if="! isLoading && categories?.length"
+            v-if="! isLoading"
         >
-            <div class="relative">
+            <h2 class="font-dmserif text-3xl max-md:text-2xl max-sm:text-xl mb-6" v-if="title" v-text="title"></h2>
+            <div class="relative" v-if="categories?.length">
                 <div
                     ref="swiperContainer"
                     class="scrollbar-hide flex gap-10 overflow-auto scroll-smooth max-lg:gap-4"
@@ -28,7 +29,7 @@
                         v-for="category in categories"
                     >
                         <a
-                            :href="category.slug"
+                            :href="category.url || category.slug"
                             class="h-[110px] w-[110px] rounded-full bg-zinc-100 max-md:h-20 max-md:w-20 max-sm:h-[60px] max-sm:w-[60px]"
                             :aria-label="category.name"
                         >
@@ -44,11 +45,13 @@
                                 height="110"
                                 class="w-full rounded-full max-sm:h-[60px] max-sm:w-[60px]"
                                 ::alt="category.name"
+                                :fallback="fallback"
+                                :lazy="false"
                             />
                         </a>
 
                         <a
-                            :href="category.slug"
+                            :href="category.url || category.slug"
                             class=""
                         >
                             <p
@@ -78,6 +81,9 @@
                 >
                 </span>
             </div>
+            <p class="text-gray-500 py-6 text-center" v-else>
+                @lang('shop::app.home.index.no-categories-yet')
+            </p>
         </div>
 
         <!-- Category Carousel Shimmer -->
@@ -107,7 +113,7 @@
 
                     offset: 323,
 
-                    fallback: "{{ bagisto_asset('images/small-product-placeholder.webp') }}"
+                    fallback: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&q=80"
                 };
             },
 

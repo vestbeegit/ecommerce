@@ -102,7 +102,7 @@
                         class="h-6 w-auto sm:h-6"
                         width="20"
                         height="20"
-                        alt="Bizora"
+                        alt="FURSATK"
                     />
                 </div>
 

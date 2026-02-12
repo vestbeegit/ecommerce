@@ -36,8 +36,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Force HTTP scheme for IP-based access
-        if (str_contains(config('app.url'), '82.180.132.134')) {
+        // Force HTTP when APP_URL uses http (avoids ERR_SSL_PROTOCOL_ERROR when server has no SSL)
+        $appUrl = config('app.url');
+        if ($appUrl && str_starts_with(strtolower($appUrl), 'http://')) {
             URL::forceScheme('http');
         }
 

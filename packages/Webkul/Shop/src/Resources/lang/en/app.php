@@ -5,10 +5,10 @@ return [
         'forgot-password' => [
             'already-sent'         => 'Already Password Reset Mail Sent.',
             'back'                 => 'Back to sign In ?',
-            'bagisto'              => 'Bizora',
+            'bagisto'              => 'FURSATK',
             'email'                => 'Email',
             'email-not-exist'      => 'We cannot find a user with that email address.',
-            'footer'               => '© Copyright 2010 - :current_year, Bizora Software (Registered in India). All rights reserved.',
+            'footer'               => '© Copyright 2010 - :current_year, FURSATK Software (Registered in India). All rights reserved.',
             'forgot-password-text' => 'If you forgot your password, recover it by entering your email address.',
             'page-title'           => 'Forgot your password ?',
             'reset-link-sent'      => 'We have e-mailed your reset password link.',
@@ -19,21 +19,21 @@ return [
 
         'reset-password' => [
             'back-link-title'  => 'Back to Sign In',
-            'bagisto'          => 'Bizora',
+            'bagisto'          => 'FURSATK',
             'confirm-password' => 'Confirm Password',
             'email'            => 'Registered Email',
-            'footer'           => '© Copyright 2010 - :current_year, Bizora Software (Registered in India). All rights reserved.',
+            'footer'           => '© Copyright 2010 - :current_year, FURSATK Software (Registered in India). All rights reserved.',
             'password'         => 'Password',
             'submit-btn-title' => 'Reset Password',
             'title'            => 'Reset Password',
         ],
 
         'login-form' => [
-            'bagisto'             => 'Bizora',
+            'bagisto'             => 'FURSATK',
             'button-title'        => 'Sign In',
             'create-your-account' => 'Create your account',
             'email'               => 'Email',
-            'footer'              => '© Copyright 2010 - :current_year, Bizora Software (Registered in India). All rights reserved.',
+            'footer'              => '© Copyright 2010 - :current_year, FURSATK Software (Registered in India). All rights reserved.',
             'forgot-pass'         => 'Forgot Password?',
             'form-login-text'     => 'If you have an account, sign in with your email address.',
             'invalid-credentials' => 'Please check your credentials and try again.',
@@ -48,13 +48,13 @@ return [
 
         'signup-form' => [
             'account-exists'              => 'Already have an account ?',
-            'bagisto'                     => 'Bizora',
+            'bagisto'                     => 'FURSATK',
             'button-title'                => 'Register',
             'click-here'                  => 'Click Here',
             'confirm-pass'                => 'Confirm Password',
             'email'                       => 'Email',
             'first-name'                  => 'First Name',
-            'footer'                      => '© Copyright 2010 - :current_year, Bizora Software (Registered in India). All rights reserved.',
+            'footer'                      => '© Copyright 2010 - :current_year, FURSATK Software (Registered in India). All rights reserved.',
             'form-signup-text'            => 'If you are new to our store, we glad to have you as member.',
             'last-name'                   => 'Last Name',
             'page-title'                  => 'Become User',
@@ -490,7 +490,7 @@ return [
                     'bottom' => [
                         'all'           => 'All',
                         'back-button'   => 'Back to Main Menu',
-                        'bagisto'       => 'Bizora',
+                        'bagisto'       => 'FURSATK',
                         'categories'    => 'Categories',
                         'compare'       => 'Compare',
                         'dropdown-text' => 'Manage Cart, Orders & Wishlist',
@@ -511,7 +511,7 @@ return [
                 'mobile' => [
                     'account'       => 'Account',
                     'back-button'   => 'Back to Main Menu',
-                    'bagisto'       => 'Bizora',
+                    'bagisto'       => 'FURSATK',
                     'compare'       => 'Compare',
                     'currencies'    => 'Currencies',
                     'dropdown-text' => 'Manage Cart, Orders & Wishlist',
@@ -537,8 +537,9 @@ return [
                 'customer-service'       => 'Customer Service',
                 'email'                  => 'Email',
                 'footer-content'         => 'Footer Content',
-                'footer-text'            => '© :current_year Bizora. Built For Business. All rights reserved.',
+                'footer-text'            => '© :current_year FURSATK. All rights reserved.',
                 'locale'                 => 'Locale',
+                'tagline'                => 'FURSATK',
                 'newsletter-text'        => 'Get Ready for our Fun Newsletter!',
                 'order-return'           => 'Order and Returns',
                 'payment-policy'         => 'Payment Policy',
@@ -937,7 +938,7 @@ return [
             'suspended-account-message' => 'Your account has been suspended.',
 
             'index' => [
-                'bagisto'                  => 'Bizora',
+                'bagisto'                  => 'FURSATK',
                 'cart'                     => 'Cart',
                 'continue-shopping'        => 'Continue Shopping',
                 'empty-product'            => 'You don’t have a product in your cart.',
@@ -1103,9 +1104,14 @@ return [
         'index' => [
             'categories-carousel' => 'Categories Carousel',
             'image-carousel'      => 'Image Carousel',
+            'new-arrivals'        => 'New Arrivals',
+            'no-categories-yet'   => 'No categories yet. Add them in Admin → Catalog → Categories.',
+            'no-products-yet'     => 'No products yet. Add them in Admin → Catalog → Products.',
             'offer'               => 'Get UPTO 40% OFF on your 1st order SHOP NOW',
             'product-carousel'    => 'Product Carousel',
             'resend-verify-email' => 'Resend Verification Email',
+            'collections'         => 'Collections',
+            'shop-by-category'    => 'Shop by Category',
             'verify-email'        => 'Verify your email account',
         ],
 

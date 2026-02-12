@@ -35,6 +35,7 @@
                         width="291"
                         height="300"
                         ::alt="product.name"
+                        :fallback="productImageFallback"
                     />
                 </a>
 
@@ -207,6 +208,7 @@
                         width="291"
                         height="300"
                         ::alt="product.name"
+                        :fallback="productImageFallback"
                     />
                 </a>
 
@@ -350,6 +352,8 @@
                     isCustomer: '{{ auth()->guard('customer')->check() }}',
 
                     isAddingToCart: false,
+
+                    productImageFallback: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&q=80",
                 }
             },
 
